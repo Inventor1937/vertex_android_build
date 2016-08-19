@@ -13,7 +13,7 @@ ifneq (,$(filter cortex-a15 kryo krait denver,$(TARGET_$(combo_2nd_arch_prefix)C
 	#       hardware divide operations are generated. This should be removed and a
 	#       krait CPU variant added to GCC. For clang we specify -mcpu for krait in
 	#       core/clang/arm.mk.
-	arch_variant_cflags := -mcpu=cortex-a15 -mfpu=neon-vfpv4
+	arch_variant_cflags := -mcpu=cortex-a15
 
 	local_arch_has_lpae := true
 	arch_variant_ldflags := \
@@ -65,7 +65,7 @@ arch_variant_cflags += \
 ifneq (,$(filter cortex-a7 cortex-a15 krait,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)))
 	arch_variant_cflags += -mfpu=neon-vfpv4
 else
-ifneq (,$(filter cortex-a53 cortex-a53.a57 kryo denver,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)))
+ifneq (,$(filter cortex-a53 kryo denver,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)))
         arch_variant_cflags += -mfpu=neon-fp-armv8
 else
 	arch_variant_cflags += -mfpu=neon
